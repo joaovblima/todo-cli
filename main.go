@@ -37,3 +37,18 @@ func adicionarTarefas(descricao string) {
 	fmt.Println("Tarefa criada.")
 }
 
+func listarTarefas() {
+	if len(tarefas) == 0{
+		fmt.Println("Vocẽ ainda não possui tarefas adicionadas")
+		return
+	}
+
+	for _, tarefa := range tarefas {
+		status := "Pendente"
+		
+		if tarefa.Concluida {
+			status = "Concluida"
+		}
+		fmt.Printf("ID: %d | Descrição: %s | Status: %s\n", tarefa.ID, tarefa.Descrição, status)
+	}
+}
