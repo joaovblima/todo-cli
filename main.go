@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-type Tarefas struct {
+type Tasks struct {
 	ID int
 	Descrição string
 	Concluida bool
 }
 
-var tarefas []Tarefas
+var tarefas []Tasks
 var nextId int = 1
 
 func main() {
@@ -26,7 +26,7 @@ func mostrarMenu(){
 }
 
 func adicionarTarefas(descricao string) {
-	tarefa := Tarefas {
+	tarefa := Tasks {
 		ID: nextId,
 		Descrição: descricao,
 		Concluida: false,
@@ -51,4 +51,15 @@ func listarTarefas() {
 		}
 		fmt.Printf("ID: %d | Descrição: %s | Status: %s\n", tarefa.ID, tarefa.Descrição, status)
 	}
+}
+
+func completarTarefa(id int) {
+	for i, tarefa := range tarefas {
+		if tarefa.ID == id {
+			tarefas[i].Concluida = true
+			fmt.Println("Tarefa marcada como concluida. ")
+			return
+		}
+	}
+	fmt.Println("Tarefa não encontrada")
 }
