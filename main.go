@@ -63,3 +63,14 @@ func completarTarefa(id int) {
 	}
 	fmt.Println("Tarefa não encontrada")
 }
+
+func excluirTarefa(id int) {
+	for i, tarefa := range tarefas {
+		if tarefa.ID == id {
+			tarefas = append(tarefas[:i], tarefas[i + 1:]... )
+			fmt.Println("Tarefa removida com sucesso!")
+			return
+		}
+	}
+	fmt.Println("Tarefa nao encontrada.")
+}
